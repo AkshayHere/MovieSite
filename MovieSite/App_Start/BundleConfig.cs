@@ -24,7 +24,7 @@ namespace MovieSite
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-pulse.css",
                       "~/Content/site.css"));
         }
     }
