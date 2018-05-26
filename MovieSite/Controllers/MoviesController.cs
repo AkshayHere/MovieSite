@@ -11,22 +11,28 @@ namespace MovieSite.Controllers
 {
     public class MoviesController : Controller
     {
+        List<Customer> Customers = new List<Customer>
+        {
+            new Customer { Name = "Darth Vader", Id = 51},
+            new Customer { Name = "Yoda", Id = 161},
+            new Customer { Name = "Chebacca", Id = 6},
+        };
+
+        List<Movie> Movies = new List<Movie>()
+        {
+            new Movie() {ID = 1, Name = "The Big Lebowski"},
+            new Movie() {ID = 2, Name = "Star Wars"},
+            new Movie() {ID = 3, Name = "Stranger than Fiction"},
+            new Movie() {ID = 4, Name = "Cast Away"},
+            new Movie() {ID = 5, Name = "The Terminal"},
+        };
         // GET: Movies
         public ActionResult Random()
         {
-            var movie = new Movie() {ID = 51,Name = "The Big Lebowski"};
-
-            var Customers = new List<Customer>
-            {
-                new Customer { Name = "Darth Vader", Id = 51},
-                new Customer { Name = "Yoda", Id = 161},
-                new Customer { Name = "Chebacca", Id = 6},
-            };
-
             var randomMovieModel = new RandomMovieViewModel
             {
                 Customers = Customers,
-                Movie = movie
+                Movies = Movies
             };
 
             //ViewData["Movie"] = movie;
@@ -50,16 +56,28 @@ namespace MovieSite.Controllers
             return Content("id=" + id);
         }
 
-        public ActionResult Index(int? pageIndex, string sortBy)
+        //public ActionResult Index(int? pageIndex, string sortBy)
+        //{
+        //    if (!pageIndex.HasValue)
+        //        pageIndex = 1;
+        //    if (String.IsNullOrWhiteSpace(sortBy))
+        //    {
+        //        sortBy = "Name";
+        //    }
+        //    return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+        //}
+
+        public ActionResult Index()
         {
-            if (!pageIndex.HasValue)
-                pageIndex = 1;
-            if (String.IsNullOrWhiteSpace(sortBy))
+            var randomMovieModel = new RandomMovieViewModel
             {
-                sortBy = "Name";
-            }
-            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+                Customers = Customers,
+                Movies = Movies
+            };
+
+            return View(randomMovieModel);
         }
+
         [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {

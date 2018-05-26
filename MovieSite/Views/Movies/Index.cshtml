@@ -1,9 +1,21 @@
-﻿@model MovieSite.Models.Movie
+﻿@model MovieSite.ViewModels.RandomMovieViewModel
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Name</h2>
-
+@if (Model.Movies.Count == 0)
+{
+    <text>We dont have any Movies</text>
+}
+else
+{
+    <h2><strong>Movies</strong></h2>
+    <ul>
+        @foreach (var item in Model.Movies)
+        {
+            <li>@Html.ActionLink(@item.Name, "Details", "Movies", new { id = @item.ID }, null)</li>
+        }
+    </ul>
+}

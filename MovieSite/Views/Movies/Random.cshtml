@@ -6,7 +6,26 @@
 }
 
 @*<h2>@((Movie)ViewData["Movie"]).Name</h2>*@
-<h2>@Model.Movie.Name</h2>
+
+@{
+    var className = Model.Customers.Count > 0 ? "popular" : null;
+}
+
+<h2 class="@className">@Model.Movie.Name</h2>
 @Model.Customers
+
+@if (Model.Customers.Count == 0)
+{
+    <text>Noone rented this before</text>
+}
+else
+{
+    <ul>
+        @foreach (var item in @Model.Customers)
+        {
+            <li>@item.Name</li>
+        }
+    </ul>
+}
 
 
