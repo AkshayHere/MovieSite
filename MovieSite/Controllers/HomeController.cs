@@ -19,11 +19,11 @@ namespace MovieSite.Controllers
 
         List<Movie> Movies = new List<Movie>()
         {
-            new Movie() {ID = 1, Name = "The Big Lebowski"},
-            new Movie() {ID = 2, Name = "Star Wars"},
-            new Movie() {ID = 3, Name = "Stranger than Fiction"},
-            new Movie() {ID = 4, Name = "Cast Away"},
-            new Movie() {ID = 5, Name = "The Terminal"},
+            new Movie() {FilmID = 1, FilmName = "The Big Lebowski"},
+            new Movie() {FilmID = 2, FilmName = "Star Wars"},
+            new Movie() {FilmID = 3, FilmName = "Stranger than Fiction"},
+            new Movie() {FilmID = 4, FilmName = "Cast Away"},
+            new Movie() {FilmID = 5, FilmName = "The Terminal"},
         };
 
         public ActionResult Index()

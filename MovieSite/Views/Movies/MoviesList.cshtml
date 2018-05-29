@@ -1,0 +1,13 @@
+﻿@model List<MovieSite.Models.Movie>
+@{
+    ViewBag.Title = "MoviesList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MoviesList</h2>
+<ul>
+    @foreach (var itemMovie in Model)
+    {
+        <li><a href="https://www.themoviedb.org/search?query=@itemMovie.FilmName" target="_blank">@itemMovie.FilmName</a></li>
+    }
+</ul>

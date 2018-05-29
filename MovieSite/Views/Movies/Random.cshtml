@@ -11,7 +11,7 @@
     var className = Model.Customers.Count > 0 ? "popular" : null;
 }
 
-<h2 class="@className">@Model.Movie.Name</h2>
+<h2 class="@className">@Model.Movies.Count</h2>
 @Model.Customers
 
 @if (Model.Customers.Count == 0)
