@@ -13,6 +13,13 @@ namespace MovieSite.Controllers
 {
     public class MoviesController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
         List<Customer> _customers = new List<Customer>
         {
             new Customer { Name = "Darth Vader", Id = 51},
